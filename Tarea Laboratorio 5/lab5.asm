@@ -22,7 +22,7 @@ org 100h
         INC DL
         INC DI
 
-        CMP DI, 33d
+        CMP DI, 34d
         JB MOVER
 
         jmp esperartecla
@@ -74,4 +74,4 @@ org 100h
 
 section .data
 
-caracter DB "Erika $ Liliana $ Rodriguez Ponce"
+caracter DB "Erika $ Liliana $ Rodriguezz Poncee"
