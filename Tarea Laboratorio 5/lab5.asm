@@ -8,7 +8,7 @@ org 100h
     xor DX, DX
 
     MOV SI, 0
-    MOV DI, 0d
+    MOV DI, 0
     MOV DH, 10
     MOV DL, 20
     
@@ -22,7 +22,7 @@ org 100h
         INC DL
         INC DI
 
-        CMP DI, 34d
+        CMP DI, 30d
         JB MOVER
 
         jmp esperartecla
@@ -33,26 +33,31 @@ org 100h
         INT 10h
         RET
 
-    incrementarDH:
+    salto_linea:
         INC DH
         INC DH
         MOV DL, 19
         RET
+    
+    comparar:
+        CMP DI, 5d
+        JE salto_linea
+
+        CMP DI, 13d
+        JE salto_linea
+
+        CMP DI, 23d
+        JE salto_linea
+        INT 10h
+        RET
+
 
     movercursor:
         MOV AH, 02h
         MOV BH, 0h
-        CMP DI, 7d
-        JE incrementarDH
+    
+        call comparar
 
-        CMP DI, 7d
-        JE incrementarDH
-
-        CMP DI, 17d
-        JE incrementarDH
-
-        CMP DI, 27d
-        JE incrementarDH
         INT 10h
         RET
 
@@ -74,4 +79,4 @@ org 100h
 
 section .data
 
-caracter DB "Erika $ Liliana $ Rodriguezz Poncee"
+caracter DB "Erika Liliana Rodriguez Ponce"
